@@ -3,8 +3,6 @@ process.env.TZ = 'America/Sao_Paulo';
 const express = require('express');
 const app = express();
 
-const swaggerUi = require('swagger-ui-express');
-const swaggerFile = require('./swagger_output.json');
 
 //rotas
 const autenticacaoRoute = require('./core/autenticacao/route');
@@ -24,7 +22,6 @@ app.use(helmet());
 app.use(cors);
 
 autenticacaoRoute(app);
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 //app.use(auth);
 
