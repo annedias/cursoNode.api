@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
-const DB = require('../../database/database');
+const db = require('../../database/database');
 
-const TipoCliente = DB.define(
-    'tipocliente', {
+const ClienteTipo = db.define(
+    'clientetipo', {
         id: {
             type: Sequelize.INTEGER,
             required: true,
@@ -10,15 +10,15 @@ const TipoCliente = DB.define(
             autoIncrement: true
         },
         nome: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             required: true
         }
     }, {
-        tableName: 'tipocliente',
+        tableName: 'clientetipo',
         schema: 'public',
         freezeTableName: false,
         timestamps: false
     }
 );
 
-module.exports = TipoCliente;
+module.exports = ClienteTipo;

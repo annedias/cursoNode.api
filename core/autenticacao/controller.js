@@ -2,23 +2,21 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
     logar
-
 };
 
-function logar(rec, res) {
-    if (rec.body.login == 'admin' && rec.body.senha == '123') {
-        const token = jwt.sign({ id: 1 }, 'segredo', {
-            expiresIn: 300
-        })
+function logar(req, res) {
+    if (req.body.login == 'admin' && req.body.senha == '123') {
 
+        const token = jwt.sign({ id: 1 }, 'segredo', {
+            expiresIn: 3000
+        })
         return res.status(200).json({
             token: token
-
         })
     }
+    //jsonwebtoken
 
-    return res.status(400).json({
-        message: 'Login ou Senha Incorreta'
+    return res.status(401).json({
+        message: 'Login ou senha incorretos'
     })
-
-};
+}
